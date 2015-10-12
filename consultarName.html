@@ -5,6 +5,7 @@
   <title>Log-in</title>
   <link rel="stylesheet" href="css/style.css">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript" src="JS/check.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 $("#irAmenu").click(function(){
@@ -20,7 +21,7 @@ $("#irAmenu").click(function(){
   <div class="login">
     <h1><strong>Introdusca nombre o apellido </strong></h1><br>
     <form name='f1' id='f1' method="post" action="perl/perlName.pl">
-      <input type="text" name="name" placeholder="Nombre o apellido" autofocus>
+      <input type="text" name="name" id="nombre" placeholder="Nombre o apellido" autofocus>
       <input type="submit" name="login" class="login2 login-submit" value="Consultar">
       <input type="button" name="menu" id="irAmenu" class="login2 login-button" value="Ir al Menu Principal">
     </form>
