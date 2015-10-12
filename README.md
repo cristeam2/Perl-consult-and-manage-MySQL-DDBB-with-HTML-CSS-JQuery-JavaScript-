@@ -1,2 +1,4 @@
-# Perl-MySQL-connection-and-print-queries
-Here we habe 2 perl files .pl to show how connect to a Database in different ways and show their content
+
+Here you will see a HTML / CSS theme form / login buttons to connect with a DDBB in MySQL and through perl programs consult, manage and add new values,previously checking the form entries with JavaScript and JQuery
+
+
