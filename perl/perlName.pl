@@ -25,11 +25,12 @@ print "<div class='loginPerl'>";
 
 use DBI;
 use CGI;
-#use strict; 
-#use warnings;
+use strict; 
+use warnings;
 #use Data::Dumper;
 
-
+my @estructura=();
+my @usuario=();
 my $cgi = CGI->new(); # create new CGI object
 my $name = $cgi->param('name');
 my $dbh=DBI->connect(
@@ -44,13 +45,11 @@ while (my @row = $sth->fetchrow_array) {  # retrieve one row
 		push( @estructura, @row);
 }
 
-
 my $sth = $dbh->prepare("SELECT * FROM $tabla WHERE `APELLIDOS Y NOMBRES` like '%$name%';");
 $sth->execute();
 while (my @row = $sth->fetchrow_array) {  # retrieve one row
 		push( @usuario, @row);	
 }
-
 
 if (!@usuario) {
     print "<script language='javascript'>
@@ -72,21 +71,15 @@ while ($contUsuario < $longitudUsuario ) {
 		print "<br><br>";
 		
 	}
-		print "<b>@estructura[$cont] =</b> $usuario[$contUsuario]\n";
-		$cont++;
-		$contUsuario++;
-}
-
-my $sth = $dbh->prepare("SELECT column_name FROM information_schema.columns WHERE table_schema = 'basededatos' AND table_name = 'controlentrevistas' ;");
-$sth->execute();
-while (my @row = $sth->fetchrow_array) {  # retrieve one row
-		push( @array2, @row);
+	print "<b>@estructura[$cont] =</b> $usuario[$contUsuario]\n";
+	$cont++;
+	$contUsuario++;
 }
 
 $sth->finish();
 $dbh->disconnect();
 
-print "<input type=button  class='login2 login-button' value='Menu principal' onClick=location.href='../index.html'>";
+print "<input type=button  class='login2 login-button' value='Ir al menu principal' onClick=location.href='../index.html'>";
 print "</div>";
 print "</PRE>";
 print "</BODY>\n";

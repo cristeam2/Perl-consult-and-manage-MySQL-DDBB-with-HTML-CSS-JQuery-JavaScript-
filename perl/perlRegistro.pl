@@ -14,8 +14,8 @@ print "Content-Type: text/html\n\n";
 
 use DBI;
 use CGI;
-#use strict; 
-#use warnings;
+use strict; 
+use warnings;
 #use Data::Dumper;
 
 

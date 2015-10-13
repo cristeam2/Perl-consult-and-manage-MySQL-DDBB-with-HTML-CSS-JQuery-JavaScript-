@@ -5,14 +5,13 @@
 }*/
 
 
-
-function compruebaUsuario(){ 
-    if (document.getElementById("nombre").value.length <2){
+function compruebaCI(){ 
+    if (document.f1.ci.value.length <6 ){ 
         //si era la cadena vacía es que no era válido. Lo aviso 
-        alert("El usuario debe ser de almenos 2 caracteres") ;
+        alert ("La cedula debe ser de almenos 6 caracteres");
         //selecciono el texto 
-        document.getElementById("nombre").select();
+        document.f1.ci.select(); 
         //coloco otra vez el foco 
-        document.getElementById("nombre").focus();
+        document.f1.ci.focus(); 
     }
 }

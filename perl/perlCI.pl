@@ -24,11 +24,12 @@ print "<div class='loginPerl'>";
 print "<input type=button  class='login2 login-button' value='Ir al menu principal' onClick=location.href='../index.html' autofocus>";
 use DBI;
 use CGI;
-#use strict; 
-#use warnings;
+use strict; 
+use warnings;
 #use Data::Dumper;
 
-
+my @estructura=();
+my @usuario=();
 my $cgi = CGI->new(); # create new CGI object
 my $ci = $cgi->param('ci');
 my $dbh=DBI->connect(
@@ -37,14 +38,15 @@ my $dbh=DBI->connect(
 my $sth = $dbh->prepare("SELECT column_name FROM information_schema.columns WHERE table_schema = 'basededatos' AND table_name = 'controlentrevistas' ;");
 $sth->execute();
 while (my @row = $sth->fetchrow_array) {  # retrieve one row
-		push( @estructura, @row);
+		push(  @estructura, @row);
 }
 
 my $sth = $dbh->prepare("SELECT * FROM $tabla WHERE `C.I`='$ci';");
 $sth->execute();
 while (my @row = $sth->fetchrow_array) {  # retrieve one row
-		push( @usuario, @row);
+		push(  @usuario, @row);
 }
+
 if (!@usuario) {
     print "<script language='javascript'>
        alert('No hubo Resultados');
@@ -60,20 +62,14 @@ print "<strong><center>Resultados: ". $longitudUsuario / $longitud." </center></
 my $cont= my $contResultados= my $contUsuario=0;
 while ($contUsuario < $longitudUsuario ) {
 	if ($cont == $longitud) {
-			$contResultados++;
-			$cont=0;
-			print "<br><br>";
+		$contResultados++;
+		$cont=0;
+		print "<br><br>";
 			
 	}
 	print "<b>@estructura[$cont] =</b> $usuario[$contUsuario]\n";
 	$cont++;
 	$contUsuario++;
-}
-
-my $sth = $dbh->prepare("SELECT column_name FROM information_schema.columns WHERE table_schema = 'basededatos' AND table_name = 'controlentrevistas' ;");
-$sth->execute();
-while (my @row = $sth->fetchrow_array) {  # retrieve one row
-		push( @array2, @row);
 }
 
 $sth->finish();

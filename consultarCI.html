@@ -15,15 +15,14 @@ $("#irAmenu").click(function(){
 
 })  
 })
-
  </script>
 
 </head>
 <body>
   <div class="login">
-    <h1><strong>Introdusca C.I </strong></h1><br>
+    <h1><strong><center>Introdusca C.I</center> </strong></h1><br>
     <form name='f1' id='f1' method="post" action="perl/perlCI.pl">
-      <input type="text" name="ci"  placeholder="C.I: xx.xxx.xxx / E-xx.xxx.xxx" autofocus onblur="compruebaCI()">
+      <input type="text" name="ci" id="ci" placeholder="C.I: xx.xxx.xxx / E-xx.xxx.xxx" autofocus onblur="compruebaCI()">
       <input type="submit" name="login" class="login2 login-submit" value="Consultar">
       <input type="button" name="menu" id="irAmenu" class="login2 login-button" value="Ir al Menu Principal">
        <!-- onClick="location.href='index.html'">  -->
